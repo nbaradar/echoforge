@@ -1,0 +1,1 @@
+# GET /logs (optional for PoC)
