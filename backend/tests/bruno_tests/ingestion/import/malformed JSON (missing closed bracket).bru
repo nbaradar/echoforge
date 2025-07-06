@@ -1,0 +1,24 @@
+meta {
+  name: malformed JSON (missing closed bracket)
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8000/import
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  [
+      {
+        "title": "Bad JSON Example",
+        "content": "This is missing a closing brace"
+      }
+  ]
+}
