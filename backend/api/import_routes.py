@@ -8,14 +8,14 @@ router = APIRouter()
 
 @router.post("/import")
 async def import_memories(
-    import_request: ImportRequest,
+    raw_data: dict,
     ingestion_service: IngestionService = Depends(IngestionService)
 ) -> ImportResponse:
     """
     Imports a list of memories and stores them in the database.
     """
     try:
-        result = await ingestion_service.process_import(import_request)
+        result = await ingestion_service.process_import(raw_data)
         return result
     except Exception as e:
         # In a real app, you'd want more specific error handling
