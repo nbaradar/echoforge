@@ -11,6 +11,25 @@ def normalize_content(text: str) -> str:
     """Normalizes memory content by stripping whitespace, lowercasing, and flattening newlines."""
     return re.sub(r'\s+', ' ', text.strip().lower())
 
+"""
+Parses raw memory import data into a structured ImportRequest and collects any malformed items.
+
+Args:
+    raw_data (str | dict): JSON string or Python dict representing exported memory data.
+
+Returns:
+    Tuple[ImportRequest, List[Dict[str, Any]]]: A tuple containing:
+        - ImportRequest: A validated object containing well-formed memory entries.
+        - List of failed memory items that could not be parsed due to structure or validation errors.
+
+Raises:
+    ValueError: If the JSON is invalid or no valid memory entries are found.
+
+Supports:
+    - JSON string or dict input
+    - Dict with top-level 'memories' or 'memory' keys
+    - Raw list of memory-like objects (dictionaries with 'title' and 'content')
+"""
 def parse_raw_import_data(raw_data: Union[str, Dict[str, Any]]) -> Tuple[ImportRequest, List[Dict[str, Any]]]:
     """
     Parses raw import data into an ImportRequest, handling common variations.
