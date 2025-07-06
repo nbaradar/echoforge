@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from api import import_router  # Assuming you create an __init__.py in api to expose the router
+from api import import_routes
 
 app = FastAPI()
 
-app.include_router(import_router, prefix="/api/v1")
+app.include_router(import_routes, prefix="/api")
 
 @app.get("/")
 def read_root():

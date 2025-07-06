@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
-from models.import_models import ImportRequest
+from schemas.requests import ImportRequest
+from schemas.responses import ImportResponse
 from services.ingest_service import IngestionService
 
 router = APIRouter()
@@ -9,7 +10,7 @@ router = APIRouter()
 async def import_memories(
     import_request: ImportRequest,
     ingestion_service: IngestionService = Depends(IngestionService)
-):
+) -> ImportResponse:
     """
     Imports a list of memories and stores them in the database.
     """

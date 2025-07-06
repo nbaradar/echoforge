@@ -1,7 +1,7 @@
 from fastapi import Depends
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from models.db_models import Import
-from models.import_models import ImportRequest
+from schemas.requests import ImportRequest
 from db.client import db_client
 from bson import ObjectId
 import uuid

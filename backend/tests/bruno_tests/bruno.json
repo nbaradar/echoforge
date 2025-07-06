@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "EchoForge",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
